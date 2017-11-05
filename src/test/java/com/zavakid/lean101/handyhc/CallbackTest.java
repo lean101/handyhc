@@ -1,25 +1,35 @@
 package com.zavakid.lean101.handyhc;
 
-import java.util.Optional;
-
-import org.apache.http.HttpHost;
-import org.apache.http.client.config.RequestConfig;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.concurrent.ListenableFuture;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author zavakid
  */
 public class CallbackTest {
 
+    private static AnnotationConfigApplicationContext application = null;
+
+    @BeforeClass
+    public static void setup() {
+        application = new AnnotationConfigApplicationContext(AsyncHttpClientConfigDemo.class);
+    }
+
+    @AfterClass
+    public static void down() {
+        if (application != null) {
+            application.close();
+        }
+    }
+
     @Test
     public void testRequestCallback() throws Exception {
-
-        AnnotationConfigApplicationContext application = new AnnotationConfigApplicationContext(
-            AsyncHttpClientConfigDemo.class);
 
         AsyncRestTemplateExt asyncRestTemplateExt = application.getBean(AsyncRestTemplateExt.class);
 
