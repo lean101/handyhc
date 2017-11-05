@@ -118,4 +118,10 @@
             <timezone>+8</timezone>
         </developer>
     </developers>
+
+    <scm>
+      <url>git@github.com:lean101/handyhc.git</url>
+      <connection>scm:git:git@github.com:lean101/handyhc.git</connection>
+      <developerConnection>scm:git:git@github.com:lean101/handyhc.git</developerConnection>
+    </scm>
 </project>
